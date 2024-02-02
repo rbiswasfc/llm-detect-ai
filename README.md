@@ -68,73 +68,73 @@ use_wandb=false
 We fine-tuned a wide variety of LLMs using the CLM objective on [PERSUADE](https://www.kaggle.com/datasets/nbroad/persaude-corpus-2) corpus to produce student like essays. The fine-tuned checkpoints were uploaded as a Kaggle Dataset `conjuring92/detect-ai-persuade-clm-ckpts`. These checkpoints can be used to generate essays using the following commands:
 
 ```
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_tiny_llama.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_tiny_llama.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_pythia.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_pythia.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_bloom.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_bloom.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_gpt2.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_gpt2.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_opt.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_opt.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_falcon.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_falcon.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_mpt.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_mpt.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_llama13b.yaml
+accelerate launch ./code/generate_r_clm.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_llama13b.yaml
 
-accelerate launch ./detect-ai/code/generate_r_clm_from_scratch.py \
---config_path ./detect-ai/conf/r_clm/conf_r_clm_generate_mistral_persuade.yaml
+accelerate launch ./code/generate_r_clm_from_scratch.py \
+--config_path ./conf/r_clm/conf_r_clm_generate_mistral_persuade.yaml
 ```
 
 Optionally, the fine-tuning of LLMs for text generation can be done using the following commands:
 
 ```
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_tiny_llama \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_pythia \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_bloom \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_gpt2 \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_opt \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_falcon \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_mpt \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm.py \
+accelerate launch ./code/train_r_clm.py \
 --config-name conf_r_clm_llama13b \
 use_wandb=false
 
-accelerate launch ./detect-ai/code/train_r_clm_from_scratch.py \
+accelerate launch ./code/train_r_clm_from_scratch.py \
 --config-name conf_r_clm_mistral_persuade \
 use_wandb=false
 ```
