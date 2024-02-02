@@ -1,0 +1,9 @@
+input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
+base_model_path: ahxt/LiteLlama-460M-1T
+adapter_path: ../models/r_clm_lite_llama/last
+max_num_tokens: 768
+output_dir: ../data/scaling/lite_llama/v1
+n_examples: 256
+n_gen_per_prompt: 2
+
+

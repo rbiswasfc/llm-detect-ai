@@ -1,0 +1,45 @@
+seed: 42
+use_wandb: false
+input_data_dir: ../datasets/external/ai_mix_v26
+
+model:
+  backbone_path: microsoft/deberta-v3-base
+  max_length: 768 # 1024
+  dropout_rate: 0.01
+  gradient_checkpointing: true
+  projection_dim: 512
+  temperature: 0.1
+
+train_params:
+  per_device_train_batch_size: 64 # 512 # 512
+  per_device_eval_batch_size: 64
+  num_train_epochs: 3 # 16
+  gradient_accumulation_steps: 1
+
+  warmup_pct: 0.02
+  eval_frequency: 100 # 500 # 300 # 600
+  patience: 10
+  save_trigger: 0.0
+
+optimizer:
+  head_lr: 4e-5
+  lr: 4e-5
+  weight_decay: 1e-3
+  max_grad_norm: 1.0
+
+  eps: 1e-8
+  beta1: 0.9
+  beta2: 0.999
+
+  use_bnb: true
+  use_llrd: true
+  llrd: 0.9
+
+outputs:
+  model_dir: ../models/r_embed
+
+wandb:
+  project: detect-ai-a1
+  run_name: exp002-r-embed
+  tags:
+    - deberta

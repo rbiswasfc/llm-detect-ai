@@ -1,0 +1,54 @@
+seed: 42
+use_wandb: false
+input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
+
+model:
+  backbone_path: TinyLlama/TinyLlama-1.1B-Chat-v1.0 # mistralai/Mistral-7B-v0.1
+  max_length: 1024
+  num_labels: 1
+  
+  tokenizer:
+    padding_side: left
+    truncation_side: left
+    use_fast: true
+
+  lora:
+    target_modules:
+      - q_proj
+      - k_proj
+      - v_proj
+      - o_proj
+      - gate_proj
+      - up_proj
+      - down_proj
+    r: 16
+    lora_alpha: 32
+    lora_dropout: 0.1
+    modules_to_save:
+      - lm_head
+
+train_params:
+  per_device_train_batch_size: 1 # 512 # 512
+  per_device_eval_batch_size: 1
+  num_train_epochs: 1 # 16
+  gradient_accumulation_steps: 4
+
+  warmup_pct: 0.1
+  eval_frequency: 300 # 300 # 600
+  patience: 10
+
+optimizer:
+  name: AdamW8bit
+  head_lr: 5e-5
+  lr: 5e-5
+  weight_decay: 1e-2
+  max_grad_norm: 0.3
+
+outputs:
+  model_dir: ../models/r_clm_v2
+
+wandb:
+  project: detect-ai-a1
+  run_name: exp006-r-clm
+  tags:
+    - mistral

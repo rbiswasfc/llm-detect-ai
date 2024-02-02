@@ -1,0 +1,10 @@
+input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
+base_model_path: mistralai/Mistral-7B-v0.1
+sft_adapter_path: ../models/r_clm_v2/last
+dpo_adapter_path: ../models/r_dpo_v2/checkpoint-250
+max_num_tokens: 1296
+output_dir: ../data/custom_gen_dpo_v2
+n_examples: 256
+n_gen_per_prompt: 4
+
+

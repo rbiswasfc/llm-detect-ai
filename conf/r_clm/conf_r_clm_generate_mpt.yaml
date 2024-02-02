@@ -1,0 +1,9 @@
+input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
+base_model_path: mosaicml/mpt-7b
+adapter_path: ../models/r_clm_mpt_7b/last
+max_num_tokens: 1024
+output_dir: ../data/scaling/mpt_7b/v0
+n_examples: 1024
+n_gen_per_prompt: 2
+
+

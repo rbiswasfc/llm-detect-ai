@@ -1,0 +1,53 @@
+seed: 424
+use_wandb: false
+input_data_dir: ../datasets/external/ai_mix_v16
+
+model:
+  backbone_path: mistralai/Mistral-7B-v0.1
+  max_length: 1296
+  num_labels: 1
+  
+  tokenizer:
+    padding_side: left
+    truncation_side: left
+    use_fast: true
+
+  lora:
+    target_modules:
+      - q_proj
+      - k_proj
+    r: 8
+    lora_alpha: 16
+    lora_dropout: 0.1
+    modules_to_save:
+      - classification_head
+
+train_params:
+  per_device_train_batch_size: 1 # run on 4x A100
+  per_device_eval_batch_size: 1
+  num_train_epochs: 1 # 16
+  gradient_accumulation_steps: 4
+
+  warmup_pct: 0.1
+  eval_frequency: 500
+  patience: 20
+  save_trigger: 0.0
+
+  use_mask_aug: false # false
+  mask_aug_prob: 0.0
+
+optimizer:
+  name: AdamW8bit
+  head_lr: 2e-6
+  lr: 2e-5
+  weight_decay: 1e-2
+  max_grad_norm: 0.5
+
+outputs:
+  model_dir: ../models/r_detect_mix_v16
+
+wandb:
+  project: detect-ai-a1
+  run_name: exp010-r-detect
+  tags:
+    - mistral

@@ -1,0 +1,9 @@
+input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
+base_model_path: EleutherAI/pythia-1b
+adapter_path: ../models/r_clm_pythia/last
+max_num_tokens: 768
+output_dir: ../data/scaling/pythia_1b/v2
+n_examples: 256
+n_gen_per_prompt: 2
+
+
