@@ -142,20 +142,25 @@ def run_training(cfg):
     print_line()
     data_dir = cfg.input_data_dir
 
-    # load query dataframe
-    # train_df = pd.read_csv(os.path.join(data_dir, "train_essays.csv"))
+    try:
+        essay_df = pd.read_csv(os.path.join(data_dir, "train_essays.csv"))
+    except Exception as e:
+        essay_df = pd.read_parquet(os.path.join(data_dir, "train_essays.parquet"))
+
+    essay_df = essay_df[~essay_df['text'].isna()].copy()
+    essay_df = essay_df.reset_index(drop=True)
+
+    # train_df = pd.read_parquet(os.path.join(data_dir, "train_essays.parquet"))
     # train_df = train_df[~train_df['text'].isna()].copy()
 
-    # valid_df = pd.read_csv(os.path.join(data_dir, "valid_essays.csv"))
+    # valid_df = pd.read_parquet(os.path.join(data_dir, "valid_essays.parquet"))
     # valid_df = valid_df[~valid_df['text'].isna()].copy()
 
-    train_df = pd.read_parquet(os.path.join(data_dir, "train_essays.parquet"))
-    train_df = train_df[~train_df['text'].isna()].copy()
+    rng = random.Random(cfg.seed)
+    essay_df['fold'] = essay_df['text'].apply(lambda x: 'train' if rng.random() < 0.99 else 'valid')
+    train_df = essay_df[essay_df['fold'] == 'train'].copy()
+    valid_df = essay_df[essay_df['fold'] == 'valid'].copy()
 
-    valid_df = pd.read_parquet(os.path.join(data_dir, "valid_essays.parquet"))
-    valid_df = valid_df[~valid_df['text'].isna()].copy()
-
-    # train_df = train_df.sort_values(by="prompt_id", ascending=True)
     train_df = train_df.reset_index(drop=True)
     valid_df = valid_df.reset_index(drop=True)
 

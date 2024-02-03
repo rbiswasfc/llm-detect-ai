@@ -1,6 +1,6 @@
 input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
 base_model_path: mistralai/Mistral-7B-v0.1
-adapter_path: ../models/r_clm_v2
+adapter_path: ../models/models/r_clm_v2
 max_num_tokens: 1024
 output_dir: ../data/scaling/mistral/v0
 n_examples: 256

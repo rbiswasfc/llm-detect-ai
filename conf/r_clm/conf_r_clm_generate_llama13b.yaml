@@ -1,6 +1,6 @@
 input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
 base_model_path: KoboldAI/LLaMA2-13B-Tiefighter
-adapter_path: ../models/r_clm_llama_13b/last
+adapter_path: ../models/models/r_clm_llama_13b/last
 max_num_tokens: 768
 output_dir: ../data/scaling/llama_13b/v3
 n_examples: 256

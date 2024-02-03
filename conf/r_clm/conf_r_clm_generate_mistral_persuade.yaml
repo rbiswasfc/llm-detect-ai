@@ -1,5 +1,5 @@
 input_data_path: ../datasets/persuade_2.0_human_scores_demo_id_github.csv
-model_path: ../models/mistral_persuade_ft/last
+model_path: ../models/models/mistral_persuade_ft/last
 max_num_tokens: 1024
 output_dir: ../data/scaling/mistral_persuade_low_vocab/v2
 n_examples: 256
